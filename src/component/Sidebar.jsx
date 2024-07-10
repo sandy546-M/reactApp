@@ -15,7 +15,7 @@ const Sidebar = ({ groups, onCreateGroup, onSelectGroup }) => {
     onCreateGroup(newGroup);
     setGroupName('');
     setSelectedColor('');
-    setShowCreateGroup(false);
+    setShowCreateGroup(true);
   };
 
   return (
