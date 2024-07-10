@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MainContent.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +7,11 @@ import image1 from './image1.png';
 const MainContent = ({ selectedGroup, onExitGroup }) => {
   const [notes, setNotes] = useState([]);
   const [noteText, setNoteText] = useState('');
+
+  useEffect(() => {
+    setNotes([]);
+    setNoteText('');
+  }, [selectedGroup]);
 
   const handleSendNote = () => {
     if (noteText.trim()) {
@@ -20,10 +25,12 @@ const MainContent = ({ selectedGroup, onExitGroup }) => {
       {!selectedGroup ? (
         <div className="default-view">
           <img src={image1} alt="Random Image" />
-          <h2 style={{fontSize: "40px", margin: "0"}}>Pocket Notes</h2>
-          <div style={{paddingRight: "175px", paddingLeft: "175px"}}>
-            <p>Send and receive messages without keeping your phone online.
-          Use Pocket Notes on up to 4 linked devices and 1 mobile phone</p>
+          <h2 style={{ fontSize: '40px', margin: '0' }}>Pocket Notes</h2>
+          <div style={{ paddingRight: '175px', paddingLeft: '175px' }}>
+            <p>
+              Send and receive messages without keeping your phone online.
+              Use Pocket Notes on up to 4 linked devices and 1 mobile phone.
+            </p>
           </div>
         </div>
       ) : (

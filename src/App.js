@@ -15,14 +15,10 @@ const App = () => {
     setSelectedGroup(group);
   };
 
-  const handleExitGroup = () => {
-    setSelectedGroup(null);
-  };
-
   return (
     <div className="app">
       <Sidebar groups={groups} onCreateGroup={handleCreateGroup} onSelectGroup={handleSelectGroup} />
-      <MainContent selectedGroup={selectedGroup} onExitGroup={handleExitGroup} />
+      <MainContent selectedGroup={selectedGroup} />
     </div>
   );
 };

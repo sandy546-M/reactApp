@@ -104,4 +104,9 @@
     margin-top: 10px;
   }
 
+  .group-item.selected {
+    background-color: rgba(47, 47, 47, 0.17);
+    margin: 0;
+  }
+
   
