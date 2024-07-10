@@ -4,18 +4,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import image1 from './image1.png';
 
-const MainContent = ({ selectedGroup, onExitGroup }) => {
+const MainContent = ({ selectedGroup, onAddMessageToGroup, loadMessages }) => {
   const [notes, setNotes] = useState([]);
   const [noteText, setNoteText] = useState('');
 
   useEffect(() => {
-    setNotes([]);
-    setNoteText('');
-  }, [selectedGroup]);
+    if (selectedGroup) {
+      const messages = loadMessages(selectedGroup.id);
+      setNotes(messages);
+    }
+  }, [selectedGroup, loadMessages]);
 
   const handleSendNote = () => {
     if (noteText.trim()) {
-      setNotes([...notes, { id: notes.length + 1, text: noteText }]);
+      const newNote = { id: notes.length + 1, text: noteText };
+      setNotes([...notes, newNote]);
+      onAddMessageToGroup(selectedGroup.id, newNote);
       setNoteText('');
     }
   };

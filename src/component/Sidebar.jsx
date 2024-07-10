@@ -6,22 +6,25 @@ const Sidebar = ({ groups, onCreateGroup, onSelectGroup }) => {
   const [groupName, setGroupName] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedGroupId, setSelectedGroupId] = useState(null);
-  
+
   const handleCreateGroup = () => {
     const newGroup = {
       id: groups.length + 1,
       name: groupName,
       color: selectedColor,
+      messages: []
     };
     onCreateGroup(newGroup);
     setGroupName('');
     setSelectedColor('');
     setShowCreateGroup(false);
   };
+
   const handleSelectGroup = (group) => {
-    setSelectedGroupId(group.id); 
+    setSelectedGroupId(group.id);
     onSelectGroup(group);
   };
+
   return (
     <div className="sidebar">
     <div className="sidebar-header">
